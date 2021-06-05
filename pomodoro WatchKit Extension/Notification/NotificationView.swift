@@ -2,7 +2,7 @@
 //  NotificationView.swift
 //  pomodoro WatchKit Extension
 //
-//  Created by Matheus Silva on 04/06/21.
+//  Created by Matheus Gois on 04/06/21.
 //
 
 import SwiftUI
