@@ -12,7 +12,7 @@ final class CommonData {
     private init() {}
     static let shared = CommonData()
 
-    @UserDefaultAccess(key: "minutes", defaultValue: Default.minutes)
+    @UserDefaultAccess(key: "minutes", defaultValue: Default.workMinutes)
     public var minutes: Int
 
     @UserDefaultAccess(key: "seconds", defaultValue: Default.seconds)
@@ -27,8 +27,8 @@ final class CommonData {
     @UserDefaultAccess(key: "times", defaultValue: Default.times)
     public var times: Int
 
-    @UserDefaultAccess(key: "workTime", defaultValue: Default.workTime)
-    public var workTime: Bool
+    @UserDefaultAccess(key: "isWorking", defaultValue: Default.isWorking)
+    public var isWorking: Bool
 
     @UserDefaultAccess(key: "isRunning", defaultValue: Default.isRunning)
     public var isRunning: Bool
@@ -38,14 +38,15 @@ final class CommonData {
 
 extension CommonData {
     enum Default {
-        static let minutes: Int = 1
+        static let workMinutes: Int = 1
+        static let freeMinutes: Int = 1
         static let seconds: Int = 0
 
         static let part: Int = 1
         static let full: Int = 4
         static let times: Int = 1
 
-        static let workTime: Bool = true
+        static let isWorking: Bool = true
         static let isRunning: Bool = false
     }
 }

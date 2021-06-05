@@ -19,6 +19,7 @@ extension Int {
             return "\(self)"
         }
     }
+    var double: Double { Double(self) }
 
     // MARK: - Methods
 

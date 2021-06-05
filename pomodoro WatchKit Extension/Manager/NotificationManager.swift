@@ -16,19 +16,53 @@ struct NotificationManager {
 
     // MARK: - Methods
 
-    static func firstNotification(
-        _ message: Message
-    ) {
-        let timer = Double(CommonData.shared.minutes * 60 + CommonData.shared.seconds)
-        let repeats = false
-        sendNotification(message, timer, repeats)
+    static func sheduleNotifications() {
+        let quantity = 10
+        removeNotifications()
+        removeAllDelivered()
+        for i in .zero..<quantity {
+            let remain = CommonData.shared.minutes.double * 60 + CommonData.shared.seconds.double
+
+            let workMinutes = CommonData.Default.workMinutes.double * 60
+            let freeMinutes = CommonData.Default.freeMinutes.double * 60
+
+            let isWorking = CommonData.shared.isWorking
+            let n = i.double
+
+            let breakTime = remain + n * workMinutes + (n + (isWorking ? 0 : 1)) * freeMinutes
+            let workTime = remain + n * workMinutes + (n + (isWorking ? 1 : 0)) * freeMinutes
+
+            sheduleNotification(
+                message: .init(type: .break),
+                timer: breakTime,
+                repeats: false
+            )
+
+            sheduleNotification(
+                message: .init(type: .work),
+                timer: workTime,
+                repeats: false
+            )
+        }
     }
 
-    static func sendNotification(
-        _ message: Message,
-        _ timer: Double,
-        _ repeats: Bool
-        ) {
+    static func removeNotifications() {
+        center.removeAllPendingNotificationRequests()
+    }
+
+    static func requestAuthorization() {
+        center.requestAuthorization(options: [.sound, .alert]) { _, _ in }
+    }
+}
+
+// MARK: - Helpers
+
+fileprivate extension NotificationManager {
+    static func sheduleNotification(
+        message: Message,
+        timer: Double,
+        repeats: Bool
+    ) {
         guard !timer.isZero else { return }
 
         let trigger = UNTimeIntervalNotificationTrigger(
@@ -45,18 +79,6 @@ struct NotificationManager {
         center.add(request)
     }
 
-    static func removeNotifications() {
-        center.removeAllPendingNotificationRequests()
-    }
-
-    static func requestAuthorization() {
-        center.requestAuthorization(options: [.sound, .alert]) { _, _ in }
-    }
-}
-
-// MARK: - Helpers
-
-fileprivate extension NotificationManager {
     static func createContent(_ data: Message) -> UNMutableNotificationContent {
         let content = UNMutableNotificationContent()
         content.title = data.title
@@ -73,11 +95,25 @@ fileprivate extension NotificationManager {
     }
 }
 
+// MARK: - Enums
+
+extension NotificationManager {
+    enum TypeMessage {
+        case work
+        case `break`
+    }
+}
+
 // MARK: - Structs
 
 extension NotificationManager {
     struct Message {
         let title: String
         let message: String
+
+        init(type: TypeMessage) {
+            title = type == .work ? "Work" : "Break"
+            message = type == .work ? "Go back to work" : "Take a minute to relax"
+        }
     }
 }

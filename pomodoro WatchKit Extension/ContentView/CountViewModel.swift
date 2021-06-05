@@ -44,9 +44,9 @@ class CountViewModel: ObservableObject {
         }
     }
 
-    @Published private(set) var workTime: Bool = CommonData.shared.workTime {
+    @Published private(set) var isWorking: Bool = CommonData.shared.isWorking {
         willSet {
-            CommonData.shared.workTime = newValue
+            CommonData.shared.isWorking = newValue
         }
     }
 
@@ -54,7 +54,7 @@ class CountViewModel: ObservableObject {
         willSet {
             CommonData.shared.isRunning = newValue
             if newValue {
-                NotificationManager.firstNotification(alertMessage)
+                NotificationManager.sheduleNotifications()
             } else {
                 NotificationManager.removeNotifications()
             }
@@ -69,14 +69,7 @@ class CountViewModel: ObservableObject {
 
     // Private
     private var newTime: Int {
-        workTime ? Constants.Values.workMinutes : Constants.Values.freeMinutes
-    }
-
-    private var alertMessage: NotificationManager.Message {
-        .init(
-            title: !workTime ? "Work" : "Break",
-            message: !workTime ? "Go back to work" : "Take a minute to relax"
-        )
+        isWorking ? Constants.Values.workMinutes : Constants.Values.freeMinutes
     }
 
     // MARK: - Methods
@@ -85,11 +78,11 @@ class CountViewModel: ObservableObject {
         guard isRunning else { return }
         if seconds.isZero {
             if minutes.isZero {
-                workTime.toggle()
+                isWorking.toggle()
                 haptic()    
                 minutes = newTime
 
-                if workTime {
+                if isWorking {
                     part.increment()
                 }
 
@@ -107,13 +100,13 @@ class CountViewModel: ObservableObject {
     }
 
     open func reset() {
-        minutes = CommonData.Default.minutes
+        minutes = CommonData.Default.workMinutes
         seconds = CommonData.Default.seconds
         part = CommonData.Default.part
         full = CommonData.Default.full
         times = CommonData.Default.times
         isRunning = CommonData.Default.isRunning
-        workTime = CommonData.Default.workTime
+        isWorking = CommonData.Default.isWorking
     }
 }
 
@@ -121,7 +114,7 @@ class CountViewModel: ObservableObject {
 
 fileprivate extension CountViewModel {
     func haptic() {
-        let type: WKHapticType = workTime ? .success : .retry
+        let type: WKHapticType = isWorking ? .success : .retry
         WKInterfaceDevice.current().play(type)
     }
 }
@@ -133,7 +126,7 @@ fileprivate extension CountViewModel {
         enum Values {
             static let workMinutes: Int = 0
             static let freeMinutes: Int = 0
-            static let secondsFull: Int = 5 // 59
+            static let secondsFull: Int = 59
 
             static let timerPublish: Double = 1
         }

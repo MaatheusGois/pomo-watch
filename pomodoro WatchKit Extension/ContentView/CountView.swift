@@ -34,14 +34,16 @@ fileprivate extension CountView {
             Spacer()
             Text(viewModel.timerTitle)
                 .font(.system(size: Constants.Font.timer))
-                .foregroundColor(viewModel.workTime ? .red : .blue)
+                .foregroundColor(viewModel.isWorking ? .red : .blue)
                 .onReceive(viewModel.timer) { _ in
                     viewModel.incrementTimer()
                 }
-
         }
         .padding([.top])
         .padding([.top])
+        .onTapGesture {
+            WKInterfaceDevice.current().play(.click)
+        }
     }
 
     func buildActionButton() -> some View {

@@ -67,7 +67,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8243F68B266AF336008A95C7 /* pomodoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pomodoro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8243F68B266AF336008A95C7 /* Pomodoro+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pomodoro+.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8243F68F266AF337008A95C7 /* pomodoro WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pomodoro WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8243F694266AF339008A95C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8243F696266AF339008A95C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 		8243F68C266AF336008A95C7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8243F68B266AF336008A95C7 /* pomodoro.app */,
+				8243F68B266AF336008A95C7 /* Pomodoro+.app */,
 				8243F68F266AF337008A95C7 /* pomodoro WatchKit App.app */,
 				8243F69B266AF339008A95C7 /* pomodoro WatchKit Extension.appex */,
 			);
@@ -229,7 +229,7 @@
 			);
 			name = pomodoro;
 			productName = pomodoro;
-			productReference = 8243F68B266AF336008A95C7 /* pomodoro.app */;
+			productReference = 8243F68B266AF336008A95C7 /* Pomodoro+.app */;
 			productType = "com.apple.product-type.application.watchapp2-container";
 		};
 		8243F68E266AF337008A95C7 /* pomodoro WatchKit App */ = {
@@ -602,7 +602,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = maatheusgois.pomodoro;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Pomodoro+";
 				SWIFT_OBJC_BRIDGING_HEADER = "pomodoro WatchKit Extension/ContentView/pomodoro-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -623,7 +623,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = maatheusgois.pomodoro;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Pomodoro+";
 				SWIFT_OBJC_BRIDGING_HEADER = "pomodoro WatchKit Extension/ContentView/pomodoro-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
