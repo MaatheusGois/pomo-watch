@@ -32,14 +32,20 @@ final class CommonData {
 
     @UserDefaultAccess(key: "isRunning", defaultValue: Default.isRunning)
     public var isRunning: Bool
+
+    @UserDefaultAccess(key: "nextDate", defaultValue: Default.nextDate)
+    public var nextDate: Date
+
+    @UserDefaultAccess(key: "isInitialWorkState", defaultValue: Default.isWorking)
+    public var isInitialWorkState: Bool
 }
 
 // MARK: - Default
 
 extension CommonData {
     enum Default {
-        static let workMinutes: Int = 1
-        static let freeMinutes: Int = 1
+        static let workMinutes: Int = 25
+        static let freeMinutes: Int = 5
         static let seconds: Int = 0
 
         static let part: Int = 1
@@ -48,5 +54,7 @@ extension CommonData {
 
         static let isWorking: Bool = true
         static let isRunning: Bool = false
+
+        static let nextDate: Date = .init()
     }
 }

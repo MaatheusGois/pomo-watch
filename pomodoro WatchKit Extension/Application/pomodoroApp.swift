@@ -11,7 +11,6 @@ import UserNotifications
 @main
 struct pomodoroApp: App {
 
-    @Environment(\.scenePhase) private var scenePhase
     @StateObject var localNotificaitonCenter = LocalNotificaitonCenter()
 
     @SceneBuilder var body: some Scene {
@@ -36,6 +35,6 @@ class LocalNotificaitonCenter: NSObject, ObservableObject, UNUserNotificationCen
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.banner, .sound])
+//        completionHandler([.banner, .sound])
     }
 }

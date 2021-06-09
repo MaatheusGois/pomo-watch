@@ -11,6 +11,7 @@ struct CountView: View {
 
     // MARK: - Properties
 
+    @Environment(\.scenePhase) private var scenePhase
     @ObservedObject var viewModel = CountViewModel()
 
     // MARK: - Views
@@ -43,6 +44,11 @@ fileprivate extension CountView {
         .padding([.top])
         .onTapGesture {
             WKInterfaceDevice.current().play(.click)
+        }
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .active {
+                viewModel.calculatePassedTime()
+            }
         }
     }
 
