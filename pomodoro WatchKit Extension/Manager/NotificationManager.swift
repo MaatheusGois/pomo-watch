@@ -17,7 +17,7 @@ struct NotificationManager {
     // MARK: - Methods
 
     static func sheduleNotifications() {
-        let quantity = 10
+        let quantity = 100
         removeNotifications()
         removeAllDelivered()
         for i in .zero..<quantity {
