@@ -56,8 +56,10 @@
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "8"
       notificationPayloadFile = "pomodoro WatchKit Extension/PushNotificationPayload.apns">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/Pomodoro+">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8243F68E266AF337008A95C7"
@@ -65,7 +67,7 @@
             BlueprintName = "pomodoro WatchKit App"
             ReferencedContainer = "container:pomodoro.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -75,8 +77,10 @@
       debugDocumentVersioning = "YES"
       launchAutomaticallySubstyle = "8"
       notificationPayloadFile = "pomodoro WatchKit Extension/PushNotificationPayload.apns">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/Pomodoro+">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8243F68E266AF337008A95C7"
@@ -84,7 +88,16 @@
             BlueprintName = "pomodoro WatchKit App"
             ReferencedContainer = "container:pomodoro.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "8243F68E266AF337008A95C7"
+            BuildableName = "pomodoro WatchKit App.app"
+            BlueprintName = "pomodoro WatchKit App"
+            ReferencedContainer = "container:pomodoro.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
